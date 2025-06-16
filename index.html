@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Para mi niña hermosa</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: 'Great Vibes', cursive;
+      background: linear-gradient(135deg, #ffc0cb, #ffe4e1);
+      overflow: hidden;
+    }
+
+    .page {
+      width: 100vw;
+      height: 100vh;
+      position: absolute;
+      top: 0;
+      left: 100vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 2rem;
+      transition: left 1s ease-in-out;
+    }
+
+    .page.active {
+      left: 0;
+    }
+
+    h1 {
+      font-size: 4rem;
+      color: #c71585;
+      text-shadow: 2px 2px 5px #fff;
+    }
+
+    h3 {
+      font-size: 1.5rem;
+      color: #8b0000;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 1.8rem;
+      color: #000000;
+      max-width: 600px;
+      margin-top: 1rem;
+    }
+
+    button {
+      margin-top: 2rem;
+      padding: 1rem 2rem;
+      font-size: 1.2rem;
+      background: #ff69b4;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: background 0.2s;
+    }
+
+    button:hover {
+      background: #ff1493;
+    }
+
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      transform: rotate(45deg);
+      animation: float 10s infinite ease-in;
+      opacity: 0.6;
+    }
+
+    .heart::before, .heart::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart::after {
+      top: 0;
+      left: -10px;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) rotate(45deg);
+      }
+      100% {
+        transform: translateY(-10vh) rotate(45deg);
+      }
+    }
+
+    .counter-line {
+      font-size: 1.5rem;
+      color: #8b0000;
+      margin-top: 1rem;
+    }
+
+    .counter-line span {
+      font-weight: bold;
+      color: #c71585;
+      text-shadow: 1px 1px 2px #fff;
+    }
+
+    .foto-romantica {
+      max-width: 220px;
+      margin: 1rem 0;
+      border-radius: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+
+    audio {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Audio -->
+  <audio id="miAudio">
+    <source src="gracias.mp3" type="audio/mpeg">
+    Tu navegador no soporta audio.
+  </audio>
+
+  <!-- Página 1 a 14 ya existentes -->
+  <div class="page active" id="page1"><h3>17/05/25</h3><h1>Hola flaquita hermosa 💌</h1><img src="foto1.jpg" class="foto-romantica"><p>Hoy quiero darte algo diferente... Sé que te encantan las cartas hechas a mano, pero ¿qué me dices de una digital?</p><button onclick="nextPage()">Ver más</button></div>
+  <div class="page" id="page2"><h3>17/05/25</h3><h1>Gracias por existir</h1><img src="foto2.jpg" class="foto-romantica"><p>Te amo con todo mi corazón mi niña, te mereces lo mejor y lo más bonito del mundo, y yo te lo voy a dar mi amorcito.</p><button onclick="nextPage()">Siguiente</button></div>
+  <div class="page" id="page3"><h3>17/05/25</h3><h1>Siempre estaremos juntos 💘</h1><p>Prometo cuidarte, respetarte y hacerte sentir amada todos los días de nuestras vidas. Eres mi todo.</p><button onclick="nextPage()">Siguiente</button></div>
+  <div class="page" id="page4"><h3>17/05/25</h3><h1>Te amo 💞</h1><img src="foto3.jpg" class="foto-romantica"><p>Mira, aqui hay un conteo de tiempo desde que tu y yo estamos juntos mi amorcito, te amo hermosa.</p><p class="counter-line"><span id="days">0</span> días, <span id="hours">00</span> hs, <span id="minutes">00</span> min, <span id="seconds">00</span> seg</p><button onclick="nextPage()">Siguiente</button></div>
+  <div class="page" id="page5"><h3>17/05/25</h3><h1>Eres mi alegría diaria 🌞</h1><p>Tu sonrisa puede iluminar mis días más oscuros, y solo con pensar en ti ya soy feliz.</p><button onclick="nextPage()">Siguiente</button></div>
+  <div class="page" id="page6"><h3>17/05/25</h3><h1>Mi lugar favorito 🌍</h1><p>Entre tus brazos he encontrado el lugar donde me siento seguro, amado y completo.</p><button onclick="nextPage()">Siguiente</button></div>
+  <div class="page" id="page7"><h3>17/05/25</h3><h1>Contigo aprendí a amar ❤️</h1><p>Gracias por enseñarme que el amor se demuestra en los detalles, en el apoyo y en la paciencia.</p><button onclick="nextPage()">Siguiente</button></div>
+  <div class="page" id="page8"><h3>17/05/25</h3><h1>Pequeños momentos, grandes recuerdos 📸</h1><img src="foto4.jpg" class="foto-romantica"><p>Esas risas, caminatas, abrazos… cada instante contigo está grabado en mi alma.</p><button onclick="nextPage()">Siguiente</button></div>
+  <div class="page" id="page9"><h3>17/05/25</h3><h1>Lo eres todo 🌟</h1><p>No necesito más que verte feliz para sentir que tengo el mundo entero.</p><button onclick="nextPage()">Siguiente</button></div>
+  <div class="page" id="page10"><h3>17/05/25</h3><h1>Eres arte 💖</h1><img src="foto5.jpg" class="foto-romantica"><p>Tu forma de amar, tu voz, tus gestos… todo en ti me encanta.</p><button onclick="nextPage()">Siguiente</button></div>
+  <div class="page" id="page11"><h3>17/05/25</h3><h1>Con solo mirarte 💫</h1><p>Puedo olvidar el mundo, los problemas y el miedo. Tú eres mi lugar seguro.</p><button onclick="nextPage()">Siguiente</button></div>
+  <div class="page" id="page12"><h3>17/05/25</h3><h1>Nuestro amor no tiene fin 🔁</h1><img src="foto6.jpg" class="foto-romantica"><p>Porque cada día que pasa, más me convenzo de que somos hechos el uno para el otro.</p><button onclick="nextPage()">Siguiente</button></div>
+
+  <!-- Nuevas páginas con imágenes -->
+  <div class="page" id="page13"><h3>17/05/25</h3><h1>Tu mirada me derrite 😍</h1><img src="foto7.jpg" class="foto-romantica"><p>Hay algo en tus ojos que me me encanta, es como si pudiera ver el universo entero en ellos.</p><button onclick="nextPage()">Siguiente</button></div>
+  <div class="page" id="page14"><h3>17/05/25</h3><h1>Amor en cada detalle 🎀</h1><img src="foto8.jpg" class="foto-romantica"><p>Desde una caricia hasta una palabra tuya, todo en ti me enamora una y otra vez.</p><button onclick="nextPage()">Siguiente</button></div>
+  <div class="page" id="page15"><h3>17/05/25</h3><h1>Nuestra canción 💿</h1><img src="foto9.jpg" class="foto-romantica"><p>Hay canciones que se sienten como tú: dulces, profundas y que se quedan en mi corazón para siempre.</p><button onclick="nextPage()">Siguiente</button></div>
+  <div class="page" id="page16"><h3>17/05/25</h3><h1>Contigo todo es mejor 🌅</h1><img src="foto10.jpg" class="foto-romantica"><p>No importa si es un día simple o un evento importante, si estoy contigo todo tiene sentido.</p><button onclick="nextPage()">Última</button></div>
+
+  <!-- Última página -->
+  <div class="page" id="page17">
+    <h3>17/05/25</h3>
+    <h1>Gracias por tanto amor 💗</h1>
+    <p>No me canso de repetirte cuánto te amo, y todo lo que me haces sentir. ¡Gracias por existir!</p>
+    <button onclick="restart()">Volver a leer</button>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    const totalHearts = 60;
+    for (let i = 0; i < totalHearts; i++) {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (5 + Math.random() * 5) + 's';
+      heart.style.opacity = Math.random();
+      document.body.appendChild(heart);
+    }
+
+    let currentPage = 1;
+    function nextPage() {
+      document.getElementById(`page${currentPage}`).classList.remove('active');
+      currentPage++;
+      const next = document.getElementById(`page${currentPage}`);
+      if (next) next.classList.add('active');
+    }
+
+    function restart() {
+      document.getElementById(`page${currentPage}`).classList.remove('active');
+      currentPage = 1;
+      document.getElementById(`page${currentPage}`).classList.add('active');
+    }
+
+    document.body.addEventListener('click', function () {
+      const audio = document.getElementById('miAudio');
+      if (audio.paused) {
+        audio.play().catch(error => {
+          console.log("Error al reproducir el audio:", error);
+        });
+      }
+    }, { once: true });
+
+    const loveStartDate = new Date(2025, 4, 17, 0, 0, 0);
+    const daysElem = document.getElementById('days');
+    const hoursElem = document.getElementById('hours');
+    const minutesElem = document.getElementById('minutes');
+    const secondsElem = document.getElementById('seconds');
+
+    function updateLoveCounter() {
+      const now = new Date();
+      let diff = now - loveStartDate;
+
+      if (diff < 0) {
+        daysElem.textContent = "0";
+        hoursElem.textContent = "00";
+        minutesElem.textContent = "00";
+        secondsElem.textContent = "00";
+        return;
+      }
+
+      let totalSeconds = Math.floor(diff / 1000);
+      let s = totalSeconds % 60;
+      let totalMinutes = Math.floor(totalSeconds / 60);
+      let m = totalMinutes % 60;
+      let totalHours = Math.floor(totalMinutes / 60);
+      let h = totalHours % 24;
+      let d = Math.floor(totalHours / 24);
+
+      daysElem.textContent = d;
+      hoursElem.textContent = String(h).padStart(2, '0');
+      minutesElem.textContent = String(m).padStart(2, '0');
+      secondsElem.textContent = String(s).padStart(2, '0');
+    }
+
+    setInterval(updateLoveCounter, 1000);
+    updateLoveCounter();
+  </script>
+</body>
+</html>
